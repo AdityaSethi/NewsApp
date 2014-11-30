@@ -1,0 +1,12 @@
+<div class="auth-forms">
+
+  <h2>Log In</h2>
+
+  <form data-ng-submit="login()">
+    <p data-ng-show="error" class="text-danger">{{ error }}</p>
+    <input type="email" data-ng-model="user.email" placeholder="Email" class="form-control"><br>
+    <input type="password" data-ng-model="user.password" placeholder="Password" class="form-control"><br>
+    <input type="submit" value="Log in" class="btn btn-primary" />
+  </form>
+
+</div>
