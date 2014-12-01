@@ -1,0 +1,10 @@
+{
+  "firebase": "glowing-fire-4211",
+  "public": "dist",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "rules": "security-rules.json"
+}
