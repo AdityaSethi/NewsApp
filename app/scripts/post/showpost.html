@@ -1,5 +1,56 @@
-<div>
-  <a ng-href="{{ post.url }}">{{ post.title }}</a>
-</div>
+<div class="container posts-page">
 
-<a data-ui-sref="posts">Back to Posts</a>
+  <div class="post row">
+    <div class="col-xs-1">
+    </div>
+    <div class="col-md-9 col-xs-11">
+      <div class="info">
+        <a data-ng-href="{{ post.url }}">
+          {{ post.title }}
+          <span class="url">({{ post.url | hostnameFromUrl }})</span>
+        </a>
+      </div>
+      <div>
+        <span>
+          submitted by
+          <a data-ui-sref="users({id: post.creatorUID })">
+            {{ post.creator }}
+          </a>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+
+  <div data-ng-repeat="comment in comments" class="row cmt">
+    <div class="col-md-12">
+      <p>{{ comment.text }}</p>
+      <p class="author">posted by
+        <a data-ui-sref="users({id: comment.creatorUID })">
+          {{ comment.creator }}
+        </a>
+        <a data-ng-href=""
+           data-ng-click="deleteComment(comment)"
+           data-ng-show="signedIn() && comment.creatorUID === user.uid">
+          (delete)
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="cmt-form">
+    <div data-ng-hide="signedIn()">
+      <p><a data-ui-sref="login">Sign in</a> to post a comment</p>
+    </div>
+
+    <form data-ng-show="signedIn()" data-ng-submit="addComment()">
+      <textarea
+        data-ng-model="commentText"
+        placeholder="Post a Comment"
+        class="form-control"></textarea><br />
+      <input type="submit" value="Post Comment" class="btn btn-primary" />
+    </form>
+  </div>
+
+</div>

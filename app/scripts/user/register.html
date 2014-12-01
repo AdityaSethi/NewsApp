@@ -4,6 +4,7 @@
 
   <form data-ng-submit="register()">
   	<p data-ng-show="error" class="text-danger">{{ error }}</p>
+  	<input type="text" data-ng-model="user.username" placeholder="Username" class="form-control"><br>
     <input type="email" data-ng-model="user.email" placeholder="Email" class="form-control"><br>
     <input type="password" data-ng-model="user.password" placeholder="Password" class="form-control"><br>
     <input type="submit" value="Register" class="btn btn-primary" />

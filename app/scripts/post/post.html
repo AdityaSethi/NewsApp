@@ -11,10 +11,10 @@
         </a>
       </div>
       <div>
-        <span>submitted by <a data-ng-href="#/users/{{ post.creatorUID }}">{{ post.creator }}</a></span>
+        <span>submitted by <a data-ui-sref="user({id: post.creatorUID })">{{ post.creator }}</a></span>
         &mdash;
         <a data-ui-sref="showpost({postId: post.$id })">comments</a>
-        <a data-ng-click="deletePost(post)">delete</a>
+        <a ng-click="deletePost(post)" ng-show="user.uid === post.creatorUID">delete</a>
       </div>
     </div>
   </div>

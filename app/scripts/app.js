@@ -48,6 +48,11 @@ angular
             return Auth.resolveUser();
           }
         }
+      })
+      .state('user', {
+        url: 'user/:id',
+        templateUrl: 'scripts/user/profile.html',
+        controller: 'ProfileCtrl'
       });
   })
   .run(function ($state) {

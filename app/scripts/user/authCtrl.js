@@ -19,12 +19,23 @@ angular.module('news.user.controllers', [
     };
 
     $scope.register = function () {
-      Auth.register($scope.user).then(function() {
+      Auth.register($scope.user).then(function(user) {
         return Auth.login($scope.user).then(function() {
+          user.username = $scope.user.username;
+          return Auth.createProfile(user);
+        }).then(function() {
           $state.go('posts');
         });
-      }, function (error) {
+      }, function(error) {
         $scope.error = error.toString();
       });
     };
+  })
+  .controller('ProfileCtrl', function($scope, $stateParams, Profile) {
+    var uid = $stateParams.id;
+
+    $scope.profile = Profile.get(uid);
+    Profile.getPosts(uid).then(function(posts) {
+      $scope.posts = posts;
+    });
   });
